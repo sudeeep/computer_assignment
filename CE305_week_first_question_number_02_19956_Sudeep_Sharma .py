@@ -36,9 +36,9 @@ def floating_model(floating_dec):
         sign_bit = "0"
 
     exponent =  len(str(floating_dec))-1
-    exponent_binary_initial =int(convert_binary(exponent + 16)[2:])
+    exponent_binary_initial =int(convert_binary(exponent + 16))
     exponent_binary = str(f"{exponent_binary_initial:05d}")
-    
+    print(exponent_binary)
     initial_afterdec = str(floating_dec).split(".")[1]
     after_dec=float(str(f"0.{initial_afterdec}"))
     significand_binary=""
@@ -47,7 +47,7 @@ def floating_model(floating_dec):
             bit = "1" if after_dec >= 1.0 else "0"
             significand_binary += bit
             after_dec -= int(after_dec)
-    final_answe= str(convert_binary(int(floating_dec)))[2:]+significand_binary
+    final_answe= str(convert_binary(int(floating_dec)))+significand_binary
     final_answer=final_answe[0:8]
 
     bit_14 = (sign_bit+"_"+ str(exponent_binary)+"_"+final_answer)
